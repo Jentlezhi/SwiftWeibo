@@ -11,12 +11,7 @@ import UIKit
 class MainTabBarViewController: UITabBarController {
     
     private lazy var composeButton : UIButton = {
-        let customBtn = UIButton()
-        customBtn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState:.Normal)
-        customBtn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: .Highlighted)
-        customBtn.setImage(UIImage(named: "tabbar_compose_icon_add"), forState: .Normal)
-        customBtn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: .Highlighted)
-        customBtn.sizeToFit()
+        let customBtn = UIButton(imageName: "tabbar_compose_icon_add", backgroundImageName: "tabbar_compose_button")
         return customBtn;
     }()
 

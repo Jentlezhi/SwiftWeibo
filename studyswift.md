@@ -219,4 +219,12 @@ do {    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")   pr
 
 使用方法：通过拖动选中他们（高亮显示），然后点击 Xcode 的菜单栏，选择"Editor->Refactor to Storyboard"。
 
+##六、便利构造函数
 
+场景：使用convenience修饰的构造函数叫做便利构造函数，便利构造函数通常用在对系统的类进行构造函数的补充时使用
+
+便利构造函数的特点：
+
+*  便利构造函数通常都是写在extension里面
+*  便利构造函数init前面需要加convenience
+*  在便利构造函数中需要明确的调用self.init()
