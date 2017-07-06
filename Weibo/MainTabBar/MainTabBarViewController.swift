@@ -20,6 +20,9 @@ class MainTabBarViewController: UITabBarController {
         
         composeButton.center = CGPointMake(tabBar.center.x, tabBar.bounds.size.height*0.5)
         tabBar.addSubview(composeButton)
+        //监听按钮的点击
+        composeButton.addTarget(self, action: #selector(MainTabBarViewController.composeButtonClick), forControlEvents: .TouchUpInside)
+        
         
     }
     
@@ -29,6 +32,12 @@ class MainTabBarViewController: UITabBarController {
 //        adjsutItems()
 //    }
 
+}
+
+extension MainTabBarViewController{
+    @objc private func composeButtonClick(){
+        WBLog("composeButtonClick")
+    }
 }
 
 extension MainTabBarViewController {

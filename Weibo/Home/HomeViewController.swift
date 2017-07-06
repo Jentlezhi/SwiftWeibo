@@ -14,7 +14,7 @@ enum PrinterError: ErrorType {
     case OnFire
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,6 @@ class HomeViewController: UIViewController {
             print(error)
         }
     }
-
-
 }
 
 extension HomeViewController{

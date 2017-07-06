@@ -25,6 +25,9 @@
 		BD714EAC1EE6F7FD00E27DFD /* FoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD714EAB1EE6F7FD00E27DFD /* FoundViewController.swift */; };
 		BD714EAE1EE6F80800E27DFD /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD714EAD1EE6F80800E27DFD /* MeViewController.swift */; };
 		BD714EB01EE6F81400E27DFD /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD714EAF1EE6F81400E27DFD /* MessageViewController.swift */; };
+		BDECFD431F0D43B7003FD0AE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDECFD421F0D43B7003FD0AE /* BaseViewController.swift */; };
+		BDEE90CB1F0D4521000BBE63 /* VistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEE90CA1F0D4521000BBE63 /* VistorView.swift */; };
+		BDEE90CD1F0D4553000BBE63 /* VistorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDEE90CC1F0D4553000BBE63 /* VistorView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		BD714EAB1EE6F7FD00E27DFD /* FoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundViewController.swift; sourceTree = "<group>"; };
 		BD714EAD1EE6F80800E27DFD /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		BD714EAF1EE6F81400E27DFD /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		BDECFD421F0D43B7003FD0AE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BDEE90CA1F0D4521000BBE63 /* VistorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistorView.swift; sourceTree = "<group>"; };
+		BDEE90CC1F0D4553000BBE63 /* VistorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistorView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,8 @@
 		BD3937081F0A8C810060C467 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				BDEE90C91F0D4516000BBE63 /* VistorView */,
+				BDECFD411F0D438E003FD0AE /* BaseViewController */,
 				BD3937091F0A8CA10060C467 /* Category */,
 			);
 			path = Public;
@@ -246,6 +254,23 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		BDECFD411F0D438E003FD0AE /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BDECFD421F0D43B7003FD0AE /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		BDEE90C91F0D4516000BBE63 /* VistorView */ = {
+			isa = PBXGroup;
+			children = (
+				BDEE90CA1F0D4521000BBE63 /* VistorView.swift */,
+				BDEE90CC1F0D4553000BBE63 /* VistorView.xib */,
+			);
+			path = VistorView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -355,6 +380,7 @@
 				BD3937041F094A5F0060C467 /* Null.storyboard in Resources */,
 				BD714E721EE6DF0200E27DFD /* Main.storyboard in Resources */,
 				BD3936FD1F09463B0060C467 /* Message.storyboard in Resources */,
+				BDEE90CD1F0D4553000BBE63 /* VistorView.xib in Resources */,
 				BD3936FF1F0946590060C467 /* Found.storyboard in Resources */,
 				BD3936F81F01583A0060C467 /* MainVCSettings.json in Resources */,
 				BD3937021F09467A0060C467 /* Me.storyboard in Resources */,
@@ -388,7 +414,9 @@
 				BD714EA51EE6F3EC00E27DFD /* MainTabBarViewController.swift in Sources */,
 				BD3936B81EFFA0E20060C467 /* HomeViewController.swift in Sources */,
 				BD714EB01EE6F81400E27DFD /* MessageViewController.swift in Sources */,
+				BDECFD431F0D43B7003FD0AE /* BaseViewController.swift in Sources */,
 				BD39370B1F0A8CEE0060C467 /* UIButton+Extension.swift in Sources */,
+				BDEE90CB1F0D4521000BBE63 /* VistorView.swift in Sources */,
 				BD3937071F0A7AB10060C467 /* PublishViewController.swift in Sources */,
 				BD714EAC1EE6F7FD00E27DFD /* FoundViewController.swift in Sources */,
 			);

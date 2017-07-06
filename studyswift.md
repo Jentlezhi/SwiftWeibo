@@ -228,3 +228,133 @@ do {    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")   pr
 *  便利构造函数通常都是写在extension里面
 *  便利构造函数init前面需要加convenience
 *  在便利构造函数中需要明确的调用self.init()
+
+##七、SELECTOR
+
+描述：@selector 是 Objective-C 时代的一个关键字，它可以将一个方法转换并赋值给一个 SEL 类型，它的表现很类似一个动态的函数指针。在 Objective-C 时 selector 非常常用，从设定 target-action，到自举询问是否响应某个方法，再到指定接受通知时需要调用的方法等等，都是由 selector 来负责的。在 Objective-C 里生成一个 selector 的方法一般是这个样子的：
+
+```
+-(void) callMe {
+    //...
+}
+
+-(void) callMeWithParam:(id)obj {
+    //...
+}
+
+SEL someMethod = @selector(callMe);
+SEL anotherMethod = @selector(callMeWithParam:);
+
+// 或者也可以使用 NSSelectorFromString
+// SEL someMethod = NSSelectorFromString(@"callMe");
+// SEL anotherMethod = NSSelectorFromString(@"callMeWithParam:");
+```
+
+一般为了方便，很多人会选择使用 @selector，但是如果要追求灵活的话，可能会更愿意使用 NSSelectorFromString 的版本 -- 因为我们可以在运行时动态生成字符串，从而通过方法的名字来调用到对应的方法。
+
+在 Swift 中没有 @selector 了，取而代之，从 Swift 2.2 开始我们使用 #selector 来从暴露给 Objective-C 的代码中获取一个 selector。类似地，在 Swift 里对应原来 SEL 的类型是一个叫做 Selector 的结构体。像上面的两个例子在 Swift 中等效的写法是：
+
+```
+func callMe() {
+    //...
+}
+
+func callMeWithParam(obj: AnyObject!) {
+    //...
+}
+
+let someMethod = #selector(callMe)
+let anotherMethod = #selector(callMeWithParam(_:))
+```
+
+和 Objective-C 时一样，记得在 callMeWithParam 后面加上冒号 (:)，这才是完整的方法名字。多个参数的方法名也和原来类似，是这个样子：
+
+```
+func turnByAngle(theAngle: Int, speed: Float) {
+    //...
+}
+
+let method = #selector(turnByAngle(_:speed:))
+```
+最后需要注意的是，selector 其实是 Objective-C runtime 的概念，如果你的 selector 对应的方法只在 Swift 中可见的话 (也就是说它是一个 Swift 中的 private 方法)，在调用这个 selector 时你会遇到一个 unrecognized selector 错误：
+
+```
+错误代码
+
+private func callMe() {
+     //...
+}
+
+NSTimer.scheduledTimerWithTimeInterval(1, target: self,
+            selector:#selector(callMe), userInfo: nil, repeats: true)
+```
+
+正确的做法是在 private 前面加上 @objc 关键字，这样运行时就能找到对应的方法了。
+
+
+```
+错误代码
+
+@objc private func callMe() {
+    //...
+}
+
+NSTimer.scheduledTimerWithTimeInterval(1, target: self,
+             selector:#selector(callMe), userInfo: nil, repeats: true)
+             
+```
+
+最后，值得一提的是，如果方法名字在方法所在域内是唯一的话，我们可以简单地只是用方法的名字来作为 #selector 的内容。相比于前面带有冒号的完整的形式来说，这么写起来会方便一些：
+
+```
+let someMethod = #selector(callMe)
+let anotherMethod = #selector(callMeWithParam)
+let method = #selector(turnByAngle)
+             
+```
+但是，如果在同一个作用域中存在同样名字的两个方法，即使它们的函数签名不相同，Swift 编译器也不允许编译通过：
+
+```
+func commonFunc() {
+
+}
+
+func commonFunc(input: Int) -> Int {
+    return input
+}
+
+let method = #selector(commonFunc)
+// 编译错误，`commonFunc` 有歧义
+             
+```
+
+对于这种问题，我们可以通过将方法进行强制转换来使用：
+
+```
+let method1 = #selector(commonFunc as ()->())
+let method2 = #selector(commonFunc as Int->Int)
+             
+```
+补充：
+
+* 1.方法监听的本质：发送消息
+* 2.发送消息的过程：包装成@SEL->去类的方法列表中查找@SEL—>imp指针(函数的指针)->执行方法
+* 3.private修饰的方法不会被添加到方法列表中，swift中需要在private中添加@objc
+
+##八、xib的加载
+
+####一、自定义view
+
+
+```
+enum PrinterError: Error {    case OutOfPaper    case NoToner    case OnFire 
+}
+
+```
+使用 throw 来抛出一个错误并使用 throws 来表示一个可以抛出错误的函数。如果在函数中抛出一个错误，这个函 数会立刻返回并且调用该函数的代码会进行错误处理。
+
+```
+func send(job: Int, toPrinter printerName: String) throws -> String {    if printerName == "Never Has Toner" {        throw PrinterError.noToner    }    return "Job sent"}
+
+```
+
