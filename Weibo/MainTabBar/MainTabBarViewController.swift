@@ -10,7 +10,7 @@ import UIKit
 
 class MainTabBarViewController: UITabBarController {
     
-    private lazy var composeButton : UIButton = {
+    fileprivate lazy var composeButton : UIButton = {
         let customBtn = UIButton(imageName: "tabbar_compose_icon_add", backgroundImageName: "tabbar_compose_button")
         return customBtn;
     }()
@@ -18,10 +18,10 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        composeButton.center = CGPointMake(tabBar.center.x, tabBar.bounds.size.height*0.5)
+        composeButton.center = CGPoint(x: tabBar.center.x, y: tabBar.bounds.size.height*0.5)
         tabBar.addSubview(composeButton)
         //监听按钮的点击
-        composeButton.addTarget(self, action: #selector(MainTabBarViewController.composeButtonClick), forControlEvents: .TouchUpInside)
+        composeButton.addTarget(self, action: #selector(composeButtonClick), for: .touchUpInside)
         
         
     }
@@ -35,15 +35,15 @@ class MainTabBarViewController: UITabBarController {
 }
 
 extension MainTabBarViewController{
-    @objc private func composeButtonClick(){
+    @objc fileprivate func composeButtonClick(){
         WBLog("composeButtonClick")
     }
 }
 
 extension MainTabBarViewController {
-   private func adjsutItems(){
+   fileprivate func adjsutItems(){
         let item = tabBar.items![2]
-        item.enabled = false
+        item.isEnabled = false
     }
 }
 
@@ -62,15 +62,15 @@ extension MainTabBarViewController {
 
 //MARK: - JSON解析，动态加载控制器
 extension MainTabBarViewController {
-    private func jsonSerialization(){
-        guard let jsonPath = NSBundle.mainBundle().pathForResource("MainVCSettings.json", ofType: nil) else {
+    fileprivate func jsonSerialization(){
+        guard let jsonPath = Bundle.main.path(forResource: "MainVCSettings.json", ofType: nil) else {
             return
         }
-        guard let jsonData = NSData(contentsOfFile: jsonPath) else {
+        guard let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)) else {
             return
         }
         
-        guard let anyObject = try? NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers) else{
+        guard let anyObject = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) else{
             return
         }
         guard let dictArray = anyObject as? [[String : AnyObject]] else{
@@ -97,9 +97,9 @@ extension MainTabBarViewController {
 }
 //MARK: - 字符串创建控制器
 extension MainTabBarViewController{
-    private func addChildViewController(childControllerName: String, title: String,normalImageName: String, selectedImageName: String) {
+    fileprivate func addChildViewController(_ childControllerName: String, title: String,normalImageName: String, selectedImageName: String) {
         
-        guard let nameSpace =  NSBundle.mainBundle().infoDictionary!["CFBundleExecutable"] as? String else{
+        guard let nameSpace =  Bundle.main.infoDictionary!["CFBundleExecutable"] as? String else{
             return
         }
         
@@ -121,7 +121,7 @@ extension MainTabBarViewController{
 }
 //MARK:- 添加子控制器
 extension MainTabBarViewController {
-    private func createTabBarViewControllers(){
+    fileprivate func createTabBarViewControllers(){
     addChildViewController("HomeViewController", title: "主页", normalImageName:"tabbar_home", selectedImageName: "tabbar_home_highlighted")
     addChildViewController("MessageViewController", title: "消息", normalImageName:"tabbar_message_center", selectedImageName: "tabbar_message_center_highlighted")
     addChildViewController("FoundViewController", title: "发现", normalImageName:"tabbar_discover", selectedImageName: "tabbar_discover_highlighted")

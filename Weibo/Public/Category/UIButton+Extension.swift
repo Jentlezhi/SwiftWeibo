@@ -23,10 +23,10 @@ extension UIButton {
     //MARK: 拓展为构造函数
     convenience init(imageName: String, backgroundImageName: String){
         self.init()
-        setImage(UIImage(named: imageName), forState:.Normal)
-        setImage(UIImage(named: imageName + "_highlighted"), forState: .Highlighted)
-        setBackgroundImage(UIImage(named: backgroundImageName), forState: .Normal)
-        setBackgroundImage(UIImage(named: backgroundImageName  + "_highlighted"), forState: .Highlighted)
+        setImage(UIImage(named: imageName), for:UIControlState())
+        setImage(UIImage(named: imageName + "_highlighted"), for: .highlighted)
+        setBackgroundImage(UIImage(named: backgroundImageName), for: UIControlState())
+        setBackgroundImage(UIImage(named: backgroundImageName  + "_highlighted"), for: .highlighted)
         sizeToFit()
     }
     

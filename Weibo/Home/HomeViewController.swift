@@ -8,20 +8,51 @@
 
 import UIKit
 
-enum PrinterError: ErrorType {
-    case OutOfPaper
-    case NoToner
-    case OnFire
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
 }
 
 class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        vistorView.addRotationAnimation()
+        if !login {
+            return
+        }
+        setupNavigationBar()
+    }
+}
+
+extension HomeViewController{
+    fileprivate func setupNavigationBar(){
+        /* 抽出类拓展
+        let leftBtn = UIButton()
+        leftBtn.setImage(UIImage(named: "navigationbar_friendattention"), for: .normal)
+        leftBtn.setImage(UIImage(named: "navigationbar_friendattention_highlighted"), for: .highlighted)
+        leftBtn.sizeToFit()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
+        
+        let rightBtn = UIButton()
+        rightBtn.setImage(UIImage(named: "navigationbar_pop"), for: .normal)
+        rightBtn.setImage(UIImage(named: "navigationbar_pop_highlighted"), for: .highlighted)
+        rightBtn.sizeToFit()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        */
+        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendattention")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop")
+    }
+}
+
+//MARK: try-catch demo
+extension HomeViewController{
+    fileprivate func tryCatchDemo(){
         do {
             let printerResponse = try send( 1440, toPrinter: "On")
             print(printerResponse)
-        } catch PrinterError.OnFire {
+        } catch PrinterError.onFire {
             print("I'll just put this over here, with the rest of the fire.")
         } catch let printerError as PrinterError {
             print("Printer error: \(printerError).")
@@ -31,15 +62,15 @@ class HomeViewController: BaseViewController {
     }
 }
 
+
 extension HomeViewController{
-    
-    func send(job: Int, toPrinter printerName: String) throws -> String {
+    func send(_ job: Int, toPrinter printerName: String) throws -> String {
         if printerName == "Never Has Toner" {
-            throw PrinterError.NoToner
+            throw PrinterError.noToner
         }else if printerName == "OnFire" {
-            throw PrinterError.OnFire
+            throw PrinterError.onFire
         }else if printerName == "On" {
-            throw PrinterError.OutOfPaper
+            throw PrinterError.outOfPaper
         }
         return "Job sent"
     }

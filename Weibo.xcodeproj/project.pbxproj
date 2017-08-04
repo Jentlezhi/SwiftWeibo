@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CF3F2751F329CFC00C518A3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3F2741F329CFC00C518A3 /* UIBarButtonItem+Extension.swift */; };
 		BD3936B81EFFA0E20060C467 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3936B71EFFA0E20060C467 /* HomeViewController.swift */; };
 		BD3936F81F01583A0060C467 /* MainVCSettings.json in Resources */ = {isa = PBXBuildFile; fileRef = BD3936F71F01583A0060C467 /* MainVCSettings.json */; };
 		BD3936FA1F09460F0060C467 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3936F91F09460F0060C467 /* Home.storyboard */; };
@@ -26,8 +27,8 @@
 		BD714EAE1EE6F80800E27DFD /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD714EAD1EE6F80800E27DFD /* MeViewController.swift */; };
 		BD714EB01EE6F81400E27DFD /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD714EAF1EE6F81400E27DFD /* MessageViewController.swift */; };
 		BDECFD431F0D43B7003FD0AE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDECFD421F0D43B7003FD0AE /* BaseViewController.swift */; };
-		BDEE90CB1F0D4521000BBE63 /* VistorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEE90CA1F0D4521000BBE63 /* VistorView.swift */; };
-		BDEE90CD1F0D4553000BBE63 /* VistorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDEE90CC1F0D4553000BBE63 /* VistorView.xib */; };
+		BDEE90CB1F0D4521000BBE63 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEE90CA1F0D4521000BBE63 /* VisitorView.swift */; };
+		BDEE90CD1F0D4553000BBE63 /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDEE90CC1F0D4553000BBE63 /* VisitorView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CF3F2741F329CFC00C518A3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		BD3936B71EFFA0E20060C467 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BD3936F71F01583A0060C467 /* MainVCSettings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MainVCSettings.json; sourceTree = "<group>"; };
 		BD3936F91F09460F0060C467 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -73,8 +75,8 @@
 		BD714EAD1EE6F80800E27DFD /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		BD714EAF1EE6F81400E27DFD /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		BDECFD421F0D43B7003FD0AE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		BDEE90CA1F0D4521000BBE63 /* VistorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistorView.swift; sourceTree = "<group>"; };
-		BDEE90CC1F0D4553000BBE63 /* VistorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistorView.xib; sourceTree = "<group>"; };
+		BDEE90CA1F0D4521000BBE63 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
+		BDEE90CC1F0D4553000BBE63 /* VisitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				BD39370A1F0A8CEE0060C467 /* UIButton+Extension.swift */,
+				8CF3F2741F329CFC00C518A3 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -265,8 +268,8 @@
 		BDEE90C91F0D4516000BBE63 /* VistorView */ = {
 			isa = PBXGroup;
 			children = (
-				BDEE90CA1F0D4521000BBE63 /* VistorView.swift */,
-				BDEE90CC1F0D4553000BBE63 /* VistorView.xib */,
+				BDEE90CA1F0D4521000BBE63 /* VisitorView.swift */,
+				BDEE90CC1F0D4553000BBE63 /* VisitorView.xib */,
 			);
 			path = VistorView;
 			sourceTree = "<group>";
@@ -340,13 +343,16 @@
 					BD714E681EE6DF0200E27DFD = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = ZRH7G9EDH6;
+						LastSwiftMigration = 0830;
 					};
 					BD714E7C1EE6DF0200E27DFD = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0830;
 						TestTargetID = BD714E681EE6DF0200E27DFD;
 					};
 					BD714E871EE6DF0200E27DFD = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0830;
 						TestTargetID = BD714E681EE6DF0200E27DFD;
 					};
 				};
@@ -380,7 +386,7 @@
 				BD3937041F094A5F0060C467 /* Null.storyboard in Resources */,
 				BD714E721EE6DF0200E27DFD /* Main.storyboard in Resources */,
 				BD3936FD1F09463B0060C467 /* Message.storyboard in Resources */,
-				BDEE90CD1F0D4553000BBE63 /* VistorView.xib in Resources */,
+				BDEE90CD1F0D4553000BBE63 /* VisitorView.xib in Resources */,
 				BD3936FF1F0946590060C467 /* Found.storyboard in Resources */,
 				BD3936F81F01583A0060C467 /* MainVCSettings.json in Resources */,
 				BD3937021F09467A0060C467 /* Me.storyboard in Resources */,
@@ -414,9 +420,10 @@
 				BD714EA51EE6F3EC00E27DFD /* MainTabBarViewController.swift in Sources */,
 				BD3936B81EFFA0E20060C467 /* HomeViewController.swift in Sources */,
 				BD714EB01EE6F81400E27DFD /* MessageViewController.swift in Sources */,
+				8CF3F2751F329CFC00C518A3 /* UIBarButtonItem+Extension.swift in Sources */,
 				BDECFD431F0D43B7003FD0AE /* BaseViewController.swift in Sources */,
 				BD39370B1F0A8CEE0060C467 /* UIButton+Extension.swift in Sources */,
-				BDEE90CB1F0D4521000BBE63 /* VistorView.swift in Sources */,
+				BDEE90CB1F0D4521000BBE63 /* VisitorView.swift in Sources */,
 				BD3937071F0A7AB10060C467 /* PublishViewController.swift in Sources */,
 				BD714EAC1EE6F7FD00E27DFD /* FoundViewController.swift in Sources */,
 			);
@@ -575,12 +582,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZRH7G9EDH6;
 				INFOPLIST_FILE = Weibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG ";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Powonder.Weibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -590,11 +599,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZRH7G9EDH6;
 				INFOPLIST_FILE = Weibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Powonder.Weibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -606,6 +617,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Powonder.WeiboTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weibo.app/Weibo";
 			};
 			name = Debug;
@@ -618,6 +630,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Powonder.WeiboTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weibo.app/Weibo";
 			};
 			name = Release;
@@ -629,6 +642,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Powonder.WeiboUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Weibo;
 			};
 			name = Debug;
@@ -640,6 +654,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Powonder.WeiboUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Weibo;
 			};
 			name = Release;
