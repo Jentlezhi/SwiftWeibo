@@ -16,6 +16,9 @@ enum PrinterError: Error {
 
 class HomeViewController: BaseViewController {
 
+    // MARK:懒加载属性
+    fileprivate lazy var titleView : TitleButton = TitleButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vistorView.addRotationAnimation()
@@ -43,7 +46,18 @@ extension HomeViewController{
         */
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendattention")
         navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop")
+        titleView.setTitle("Jentle", for: .normal)
+        titleView.addTarget(self, action: #selector(titleButtonClick as (TitleButton)->()), for: .touchUpInside)
+        navigationItem.titleView = titleView
     }
+}
+
+//MARK: 事件监听点击
+extension HomeViewController{
+    @objc fileprivate func titleButtonClick(titleButton:TitleButton){
+        titleButton.isSelected = !titleButton.isSelected
+    }
+
 }
 
 //MARK: try-catch demo

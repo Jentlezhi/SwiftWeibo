@@ -343,18 +343,44 @@ let method2 = #selector(commonFunc as Int->Int)
 
 ##八、xib的加载
 
-####一、自定义view
+####提供快速从xib创建的类方法
 
 
 ```
-enum PrinterError: Error {    case OutOfPaper    case NoToner    case OnFire 
+    class func xibView() -> VisitorView{
+        
+        return Bundle.main.loadNibNamed("VisitorView",owner: nil, options:nil)!.last as! VisitorView
+    }
+
+```
+
+##九、自定义按钮
+
+####按钮的自定义
+
+
+```
+class TitleButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setImage(UIImage(named: "navigationbar_arrow_down"), for: .normal)
+        setImage(UIImage(named: "navigationbar_arrow_up"), for: .selected)
+        setTitleColor(UIColor.black, for: .normal)
+        adjustsImageWhenHighlighted = false
+        sizeToFit()
+    }
+    //MARK:swift中规定：重写控件的init(frame)方法或者init()方法，必须重写init?(coder aDecoder: NSCoder)方法
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        titleLabel!.frame.origin.x = 0;
+        imageView!.frame.origin.x = titleLabel!.frame.width + 8
+    }
+
 }
-
-```
-使用 throw 来抛出一个错误并使用 throws 来表示一个可以抛出错误的函数。如果在函数中抛出一个错误，这个函 数会立刻返回并且调用该函数的代码会进行错误处理。
-
-```
-func send(job: Int, toPrinter printerName: String) throws -> String {    if printerName == "Never Has Toner" {        throw PrinterError.noToner    }    return "Job sent"}
 
 ```
 

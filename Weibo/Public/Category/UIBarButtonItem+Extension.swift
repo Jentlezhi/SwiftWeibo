@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIBarButtonItem {
+    /* 方式一：先调用系统init方法，然后再设置自定义视图
     convenience init(imageName:String){
         self.init()
         let btn = UIButton()
@@ -17,4 +18,16 @@ extension UIBarButtonItem {
         btn.sizeToFit()
         self.customView = btn
     }
+    */
+    
+    
+    //方式二
+    convenience init(imageName:String){
+        let btn = UIButton()
+        btn.setImage(UIImage(named: imageName), for: .normal)
+        btn.setImage(UIImage(named: imageName + "_highlighted"), for: .highlighted)
+        btn.sizeToFit()
+        self.init(customView: btn)
+    }
+    
 }
