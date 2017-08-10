@@ -18,7 +18,9 @@ class HomeViewController: BaseViewController {
 
     // MARK:懒加载属性
     fileprivate lazy var titleView : TitleButton = TitleButton()
-    
+    // MARK:转场动画
+    fileprivate lazy var popverAnimation : PopverAnimation = PopverAnimation()
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         vistorView.addRotationAnimation()
@@ -56,9 +58,16 @@ extension HomeViewController{
 extension HomeViewController{
     @objc fileprivate func titleButtonClick(titleButton:TitleButton){
         titleButton.isSelected = !titleButton.isSelected
+        let popViewController = PopoverViewController()
+        popViewController.modalPresentationStyle = .custom
+        popViewController.transitioningDelegate = popverAnimation
+        present(popViewController, animated: true, completion: nil)
+        
     }
 
 }
+
+
 
 //MARK: try-catch demo
 extension HomeViewController{
