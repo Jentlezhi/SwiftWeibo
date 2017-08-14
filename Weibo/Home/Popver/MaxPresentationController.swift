@@ -10,11 +10,11 @@ import UIKit
 
 class MaxPresentationController: UIPresentationController {
     fileprivate lazy var maskView : UIView = UIView()
-    
+    //弹出控制器的frame
+    var presentedFrame = CGRect.zero
     override func containerViewWillLayoutSubviews() {
         super.containerViewWillLayoutSubviews()
-        let presentedViewW : CGFloat = 150.0
-        presentedView?.frame = CGRect(x: (UIScreen.main.bounds.size.width - presentedViewW)*0.5, y: 64.0 - 20.0, width: presentedViewW, height: 200)
+        presentedView?.frame = presentedFrame
         setMaskView()
     }
 }

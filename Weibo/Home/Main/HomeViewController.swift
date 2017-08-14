@@ -19,7 +19,9 @@ class HomeViewController: BaseViewController {
     // MARK:懒加载属性
     fileprivate lazy var titleView : TitleButton = TitleButton()
     // MARK:转场动画
-    fileprivate lazy var popverAnimation : PopverAnimation = PopverAnimation()
+    fileprivate lazy var popverAnimation : PopverAnimation = PopverAnimation { (presented) in
+        self.titleView.isSelected = presented
+    }
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,17 +59,17 @@ extension HomeViewController{
 //MARK: 事件监听点击
 extension HomeViewController{
     @objc fileprivate func titleButtonClick(titleButton:TitleButton){
-        titleButton.isSelected = !titleButton.isSelected
         let popViewController = PopoverViewController()
         popViewController.modalPresentationStyle = .custom
         popViewController.transitioningDelegate = popverAnimation
+        let presentedViewW : CGFloat = 100.0
+        let presentFrme = CGRect(x: (UIScreen.main.bounds.size.width - presentedViewW)*0.5, y: 64.0 - 20.0, width: presentedViewW, height: presentedViewW*1.2)
+        popverAnimation.presentedFrame = presentFrme
         present(popViewController, animated: true, completion: nil)
         
     }
 
 }
-
-
 
 //MARK: try-catch demo
 extension HomeViewController{

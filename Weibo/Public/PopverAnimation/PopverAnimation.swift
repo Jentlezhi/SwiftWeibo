@@ -11,21 +11,35 @@ import UIKit
 class PopverAnimation: NSObject {
     //MARK:是否为弹出动画
     var isPresented = false
+    //弹出控制器的frame
+    var presentedFrame = CGRect.zero
+    //回调
+    var animationCallBack : ((_ presented : Bool) -> ())?
+    //当一个闭包当做一个参数传进函数里，这个闭包是在这个函数执行完后执行的，这个时候我们就说这个闭包从函数逃出来了（escape）
+    init(callBack:@escaping (_ presented : Bool) -> ()) {
+        animationCallBack = callBack
+    }
+    
+    
 }
 
 //MARK:设置弹出控制器的frame
 extension PopverAnimation :UIViewControllerTransitioningDelegate{
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return MaxPresentationController(presentedViewController: presented, presenting: presenting)
+        let presentVC = MaxPresentationController(presentedViewController: presented, presenting: presenting)
+        presentVC.presentedFrame = presentedFrame
+        return presentVC
     }
     //MARK:自定义弹出的动画
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresented = true
+        animationCallBack!(isPresented)
         return self
     }
     //MARK:自定义消失的动画
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresented = false
+        animationCallBack!(isPresented)
         return self
     }
     
